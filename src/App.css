@@ -1,4 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
 .container {
-  min-height: 60vh;
+  min-height: 80vh;
   margin-bottom: 5em;
 }

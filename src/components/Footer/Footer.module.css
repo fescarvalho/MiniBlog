@@ -1,0 +1,19 @@
+.footer {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ccc;
+}
+
+.footer h3 {
+  font-family: Montserrat;
+  font-weight: 500;
+}
+
+.footer p {
+  font-family: Montserrat;
+  font-weight: 300;
+  margin-top: 10px;
+}
