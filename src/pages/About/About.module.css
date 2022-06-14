@@ -1,0 +1,22 @@
+.about {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about p {
+  color: #aaa;
+  margin: 2em;
+}
+
+.about h2 {
+  margin-top: 1em;
+}
+
+.about a {
+  display: block;
+  margin-top: 15px;
+  padding: 10px 15px;
+}
