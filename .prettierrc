@@ -1,7 +1,7 @@
 {
   "singleQuote": false,
   "tabWidth": 2,
-  "semi": true,
+  "semi": false,
   "overrides": [
     {
       "files": "*.js",
