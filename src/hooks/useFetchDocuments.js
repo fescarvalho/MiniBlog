@@ -1,53 +1,60 @@
-import { useState, useEffect } from "react";
-import {db} from "../firebase/config"
-import {collection, query, orderBy, onSnapshot, where} from "firebase/firestore"
+import { useState, useEffect } from 'react';
+import { db } from '../firebase/config';
+import {
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  where,
+} from 'firebase/firestore';
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) => {
-  const [documents, setDocuments] = useState(null)
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(null)
+  const [documents, setDocuments] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(null);
 
   //deal with memory leaks
-  const [cancelled, setCancelled] = useState(false)
-    
-  
+  const [cancelled, setCancelled] = useState(false);
+
   useEffect(() => {
     const loadData = async () => {
-      if(cancelled) return
+      if (cancelled) return;
 
-      setLoading(true) 
-      const collectionRef = await collection(db, docCollection)
+      setLoading(true);
+      const collectionRef = await collection(db, docCollection);
 
       try {
-        
-       let q = await query(
-        collectionRef, 
-        orderBy("createdAt", "desc")
-      )
-        
+        let q;
+
+        if (search) {
+          q = await query(
+            collectionRef,
+            where('tagsArray', 'array-contains', search),
+            orderBy('createdAt', 'desc')
+          );
+        } else {
+          q = await query(collectionRef, orderBy('createdAt', 'desc'));
+        }
+
         await onSnapshot(q, (querySnapshot) => {
-         
           setDocuments(
-            querySnapshot.docs.map((doc)=> ({ 
+            querySnapshot.docs.map((doc) => ({
               id: doc.id,
               ...doc.data(),
-
             }))
-          )
+          );
         });
-        setLoading(false)
+        setLoading(false);
       } catch (e) {
-        console.log(error)
-        setError(error.message)
-        setLoading(false)
+        console.log('errroou');
+        setError(e.message);
+        setLoading(false);
       }
-
-    }
-    loadData()
-
-  }, [docCollection, search, uid, cancelled])
+    };
+    loadData();
+  }, [docCollection, search, uid, cancelled]);
   useEffect(() => {
-    return () => setCancelled(true)
-  },[])
-  return {documents, loading, error}
-}
+    return () => setCancelled(true);
+  }, []);
+  return { documents, loading, error };
+};
