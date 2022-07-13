@@ -1,5 +1,6 @@
 .create_post {
   text-align: center;
+  
 }
 
 .create_post h2 {
@@ -9,4 +10,18 @@
 .create_post p {
   color: #aaa;
   margin-bottom: 2em
+}
+
+@media (max-width:600px) {
+  .create_post{
+    width: 100%;
+    height: 100%;
+    
+    
+  }
+
+  .create_post label {
+    width: 10rem;
+ 
+  }
 }

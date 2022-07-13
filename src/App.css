@@ -7,3 +7,14 @@
   min-height: 80vh;
   margin-bottom: 5em;
 }
+
+@media(max-width:600px) {
+  .container {
+    
+    margin: 0 5em auto;
+    min-height: 50vh;
+   
+}
+
+}
+

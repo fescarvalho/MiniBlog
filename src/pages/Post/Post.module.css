@@ -21,3 +21,10 @@
 .tags span {
   font-weight: bold
 }
+
+@media (max-width: 600px) {
+  .post_container img{
+  width:80%;
+}
+
+}

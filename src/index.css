@@ -108,3 +108,14 @@ textarea {
   padding: 5px;
   border-radius: 5px;
 }
+
+
+@media (max-width: 600px) {
+  .btn {
+  width: 4rem;
+ 
+  
+  padding: 2px 5px;
+  font-size: .7em;
+  }
+}
